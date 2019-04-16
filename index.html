@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="./css/all.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+
+
+    <!-- TODO: progress bar -->
+
+    <ul id="progressbar" class="d-flex ">
+
+        <li class="active"><i class="far fa-dot-circle"></i></li>
+        <li><i class="far fa-circle"></i></li>
+        <li><i class="far fa-circle"></i></li>
+        <li><i class="far fa-circle"></i></li>
+
+
+    </ul>
+
+    <!-- TODO: 5 個表單頁面 -->
+
+    <div id="form1" class="container d-flex align-items-center flex-column">
+
+        <h1>Create Account</h1>
+        <h2>Glad to see you here!</h2>
+
+        <form action="" novalidate class="col-6">
+            <div class="form-row">
+                <div class="col-12">
+                    <label for="account">Account</label>
+                    <!--       只能是英文,數字,＠,＿,-,. -->
+                    <input onkeyup="value=value.replace(/[^\a-\z\A-\Z0-9\@\_\-\.]/g,'')" type="email"
+                        class="form-control required" id="account" placeholder="example@email.com">
+                    <i style="display:none;" class="fas fa-exclamation-triangle"></i>
+                    <span data-tooltip="INVALID EMAIL" data-require="required"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-12">
+                    <label for="password">Password</label>
+                    <!--       只能是至少8碼的英文,數字 -->
+                    <input pattern="[A-Za-z0-9]{8,}" type="password" class="form-control required" id="password"
+                        placeholder="Enter password">
+                    <i style="display:none;" class="fas fa-exclamation-triangle"></i>
+                    <span data-tooltip="MINIMUM 8 CHARACTERS OR NUMBER" data-require="required"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-12">
+                    <label for="confirmPwd">Confirm Password</label>
+
+                    <input onkeyup="value=value.replace(/[^\a-\z\A-\Z0-9]/g,'')" type="password"
+                        class="form-control required" id="confirmPwd" placeholder="Enter password">
+                    <i style="display:none;" class="fas fa-exclamation-triangle"></i>
+                    <span data-tooltip="NOT MATCH" data-require="required"></span>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-block" disabled>SUBMIT & NEXT</button>
+        </form>
+
+    </div>
+    <div id="form2" class="container d-flex align-items-center flex-column">
+        <h1>General Infomation</h1>
+        <h2>Tell us who you are!</h2>
+        <form class="col-6" novalidate>
+            <div class="form-row w-100">
+                <div class="col" id="nameBlock">
+                    <label for="name">Name <span>(optional)</span></label>
+                    <!--       只能是英文,數字,-,中文 -->
+                    <input onkeyup="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5\-]/g,'')" type="text"
+                        class="form-control" id="name" placeholder="Example Name">
+                    <i style="display:none;" class="fa fa-warning fa-lg"></i>
+                    <span data-tooltip="FORMAT ERROR" data-require="required">
+                </div>
+                <div class="col" id="phoneBlock">
+                    <label for="phone">Phone*</label>
+                    <!--       只能是數字 -->
+                    <input type="tel" pattern="^09\d{2}-?\d{3}-?\d{3}$" maxlength="10" class="form-control required"
+                        id="phone" placeholder="0912345678" title="請輸入10位手機號碼">
+                    <i style="display:none;" class="fa fa-warning fa-lg"></i>
+                    <span data-tooltip="FORMAT ERROR" data-require="required">
+                </div>
+            </div>
+            <div class="form-row w-100">
+                <div class="col-5" id="yearBlock">
+                    <label for="year">Birth Date <span>(optional)</span></label>
+                    <input type="number" min="1900" max="2018" class="form-control" id="year" placeholder="YYYY">
+                    <i style="display:none;" class="fa fa-warning fa-lg"></i>
+                    <span data-tooltip="OUT OF RANGE" data-require="OUT OF RANGE">
+                </div>
+                <div class="col" id="monthBlock">
+                    <label for="month">&nbsp;</label>
+                    <input type="number" min="1" max="12" class="form-control" id="month" placeholder="MM">
+                    <i style="display:none;" class="fa fa-warning fa-lg"></i>
+                    <span data-tooltip="OUT OF RANGE" data-require="OUT OF RANGE">
+                </div>
+                <div class="col" id="dayBlock">
+                    <label for="day">&nbsp;</label>
+                    <input type="number" min="1" max="31" class="form-control" id="day" placeholder="DD">
+                    <i style="display:none;" class="fa fa-warning fa-lg"></i>
+                    <span data-tooltip="OUT OF RANGE" data-require="OUT OF RANGE">
+                </div>
+            </div>
+            <div class="form-row w-100">
+                <div class="col">
+                    <label for="validationCustom03">Address*</label>
+                    <div id="twzipcode"></div>
+                </div>
+            </div>
+            <div class="form-row w-100">
+                <div class="col">
+                    <input type="text" class="form-control required" id="adrsdetail" placeholder="Address Detail">
+                    <i style="display:none;" class="fa fa-warning fa-lg"></i>
+                    <span data-tooltip="REQUIRED FILED" data-require="required">
+                </div>
+
+            </div>
+
+            <button type="button" class="btn btn-primary btn-block" disabled>SUBMIT & NEXT</button>
+
+        </form>
+    </div>
+    <div id="form3" class="container d-flex align-items-center flex-column">
+        <h1>Update Profile Picture</h1>
+        <h2>We wanna know you more!</h2>
+        <form novalidate>
+            <div id="photo" class="d-flex align-items-center justify-content-center rounded">
+                <i class="fa fa-image fa-4x"></i>
+                <div>
+                    <h5>UPLOAD UP TO 3 PHOTOS</h5>
+                    <h6>MAX SIZE: 800*800px</h6>
+                </div>
+            </div>
+            <span id="warnpic" class="mt-4 d-none">
+                <i class="fa fa-warning fa-lg mr-2"></i><span></span>
+            </span>
+
+            <!--   不能放在click的div範圍內,只接受圖片格式 -->
+            <div>
+                <div>
+                    <input id="file" name="file[]" multiple class="d-none" type="file" accept="image/*" required>
+                </div>
+            </div>
+            <div class="d-flex mt-4" id="profile"></div>
+            <div class="d-flex mt-4" id="profile"></div>
+            <div class="d-flex mt-4" id="profile"></div>
+            <button id="picBtn" type="button" class="btn btn-primary btn-block w-100" disabled>SUBMIT & NEXT</button>
+        </form>
+    </div>
+    <div id="form4" class="container d-flex align-items-center flex-column">
+        <h1>Payment Method</h1>
+        <h2>Add your credit card infomation! </h2>
+        <form class="col-6" novalidate>
+            <div class="form-row">
+                <div class="col">
+                    <label for="cardnumber">Card Number</label>
+                    <!--       只能是數字 -->
+                    <i id="brand" class="fab fa-cc-visa"></i>
+                    <input type="text" class="form-control required" id="cardnumber"
+                        onkeyup="value=value.replace(/[^0-9]/g,'')" pattern="^(4[0-9]{12}(?:[0-9]{3})?)*$"
+                        placeholder="1234567890123456">
+                    <i class="fas fa-exclamation-triangle " style="display:none;"></i>
+                    <span data-tooltip="INVALID NUMBER" data-require="required"></span>
+                </div>
+                <div class="col">
+                    <label for="bankname">Bank Name</label>
+                    <input type="text" class="form-control required" id="bankname" placeholder="EXAMPLE BANK">
+                    <i class="fas fa-exclamation-triangle " style="display:none;"></i>
+                    <span data-tooltip="REQUIRED FIELD" data-require="required"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col" id="cvvBlock">
+                    <label for="cvv">CVV</label>
+                    <input type="number" placeholder="123" class="form-control required" id="cvv">
+                    <i class="fas fa-exclamation-triangle " style="display:none;"></i>
+                    <span data-tooltip="NOT EQUAL 3 DIGITAL" data-require="required"></span>
+                </div>
+                <div class="col">
+                    <label for="expiremonth">Expire Date</label>
+                    <input type="number" min="2" max="12" class="form-control required" id="expiremonth"
+                        placeholder="MM">
+                    <i class="fas fa-exclamation-triangle " style="display:none;"></i>
+                    <span data-tooltip="OUT OF RANGE" data-require="required"></span>
+                </div>
+                <div class="col">
+                    <label for="expireday">&nbsp;</label>
+                    <input type="number" min="1" max="31" class="form-control required" id="expireday" placeholder="DD">
+                    <span data-tooltip="OUT OF RANGE" data-require="required">
+                </div>
+            </div>
+            <button id="done" class="btn btn-primary btn-block" disabled type="button">DONE</button>
+        </form>
+    </div>
+    <div id="form5" class="container d-flex align-items-center flex-column">
+        <h1>Congratulations</h1>
+        <h2>Now you’re one of us! </h2>
+        <div id="smile">&#9787;</div>
+        <h5 id="direct">Redirected to homepage after 5 seconds…</h5>
+    </div>
+
+    <!-- JS -->
+    <script src="./js/jquery-3.3.1.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-twzipcode@1.7.14/jquery.twzipcode.min.js"></script>
+    <script src="./js/all.js"></script>
+</body>
+
+</html>

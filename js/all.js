@@ -26,16 +26,20 @@ $(document).on('click', '#done', function (event) {
     event.stopPropagation(); //type=submit
 
 });
-//TODO:信用卡
+
 $(document).on('click', '#brand', function (event) {
     if ($(this).hasClass("fa-cc-visa")) {
         $(this).removeClass("fa-cc-visa").addClass("fa-cc-mastercard");
-
+        $("#cardnumber").attr("pattern", "^5[1-5][0-9]{14}$");
     } else {
         $(this).removeClass("fa-cc-mastercard").addClass("fa-cc-visa");
-        $("#cardnumber").attr("pattern", "^(4[0-9]{12}(?:[0-9]{3})?)*$");
+        $("#cardnumber").attr("pattern", "^4\d{3}(| |-)(?:\d{4}\1){2}\d{4}$");
     }
 })
+
+// MasterCard: 5212345678901234
+// Visa 1: 4123456789012
+// Visa 2: 4123456789012345
 
 $("#cvv").on('input', function () {
     if ($("#cvv").val().length > 3 || ($("#cvv").val().length < 3 && $("#cvv").val().length > 0)) {
@@ -57,7 +61,7 @@ $("#twzipcode").twzipcode({
     countyName: "city", // 自訂城市 select 標籤的 name 值
     districtName: "town" // 自訂地區 select 標籤的 name 值
 });
-//TODO:
+
 $('#file').change(function (event) {
     fileArray.length = 0;
     $("#profile").html("");
@@ -118,7 +122,7 @@ $(document).on('click', '#profile div', function (event) {
 });
 
 
-//TODO:頁面跳轉
+
 
 $(document).on('click', '[type="button"]', function (event) {
     $("#form" + count.toString()).animate({

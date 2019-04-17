@@ -215,7 +215,7 @@ input:invalid {
             border-radius: 4px;
             background-color: $warning-color;
             color: #fff;
-            padding: 10px;
+            padding: 8px;
             font-size: $small;
             position: absolute;
             left: 100%;
@@ -223,6 +223,16 @@ input:invalid {
             margin-left: 14px;
             white-space: pre; //避免中間有空白會自動換行
             height: 30px;
+
+        }
+
+        &::after {
+            content: "";
+            top: 10%;
+            position: absolute;
+            border-width: 8px;
+            border-style: solid;
+            border-color: transparent $warning-color transparent transparent;
         }
 
 

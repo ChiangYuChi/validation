@@ -171,7 +171,7 @@ input:invalid {
       border-radius: 4px;
       background-color: #F5A623;
       color: #fff;
-      padding: 10px;
+      padding: 8px;
       font-size: 14px;
       position: absolute;
       left: 100%;
@@ -179,6 +179,13 @@ input:invalid {
       margin-left: 14px;
       white-space: pre;
       height: 30px; }
+    input:invalid:invalid ~ span::after {
+      content: "";
+      top: 10%;
+      position: absolute;
+      border-width: 8px;
+      border-style: solid;
+      border-color: transparent #F5A623 transparent transparent; }
 
 .required {
   border: 1px solid red !important; }
